@@ -35,7 +35,7 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form method="POST"  class="form-login" action="login.php">
+		      <form method="POST"  class="form-login" action="http://dip.net63.net/dip/theme/login.php">
 		        <h2 class="form-login-heading">SEEP Login</h2>
 		        <div class="login-wrap">
 		            <input type="text" class="form-control" name="user"  placeholder="User ID" autofocus>
