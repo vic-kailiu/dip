@@ -1,145 +1,6 @@
 <!DOCTYPE html>
-<script type="text/javascript" src="\assets\js\retrieveQns.php"></script>
-<?php   
-session_start();
-
-define('DB_HOST', 'mysql1.000webhost.com'); 
-define('DB_NAME', 'a2047226_dip'); 
-define('DB_USER','a2047226_myuser');
-define('DB_PASSWORD','5xxxxx'); 
-$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error()); $db=mysql_select_db(DB_NAME,$con) 
-or die("Failed to connect to MySQL: " . mysql_error()); 
-
-//echo "'$_POST[txtFld]'";
-
-$name = $_SESSION["userName"];
-
-		   $sql = "INSERT INTO studentinfo ".
-			   "(Name, Nric, Marks, Time, TimeStamp, TypeOfQns, QuizResult) ".
-			   "VALUES('$name','S1232323J','$_POST[txtMark]','$_POST[txtFld]', NOW()+ INTERVAL 1 HOUR, 'Quiz', '$_POST[txtCorrectWrong]')";
-		  $retval = mysql_query( $sql, $con );
-		  
-?>
-
 <html lang="en">
   <head>
-  
-<script>
-
-function getHiddenProp(){
-    var prefixes = ['webkit','moz','ms','o'];
-    
-    // if 'hidden' is natively supported just return it
-    if ('hidden' in document) return 'hidden';
-    
-    // otherwise loop over all the known prefixes until we find one
-    for (var i = 0; i < prefixes.length; i++){
-        if ((prefixes[i] + 'Hidden') in document) 
-            return prefixes[i] + 'Hidden';
-    }
-    // otherwise it's not supported
-    return null;
-}
-
-function isHidden() {
-    var prop = getHiddenProp();
-    if (!prop) return false;
-    
-    return document[prop];
-}
-
-var visProp = getHiddenProp();
-if (visProp) {
-  var evtname = visProp.replace(/[H|h]idden/,'') + 'visibilitychange';
-  document.addEventListener(evtname, visChange);
-}
-
-function visChange() {
-  var timestamp;
-
-// Date() prototype does not provide native number padding - let's add a method:
-Date.prototype.pad = function(integer) {
-    var result;
-    // Can't decide between ternary and slicing
-    // result = ("0" + integer).slice(-2); 
-    result = integer < 10
-                ? "0" + integer
-                : integer;
-    return result;
-};
-
-// Create a new Date() instance and add day, time and now properties
-timestamp = new Date();
-
-// Reorder the array entries to your own needs
-timestamp.day = [
-    timestamp.pad(timestamp.getDate()),
-    timestamp.pad(timestamp.getMonth() + 1), // getMonth() returns 0 to 11
-    timestamp.getFullYear()
-];
-
-timestamp.time = [
-    timestamp.pad(timestamp.getHours()),
-    timestamp.pad(timestamp.getMinutes()),
-    timestamp.pad(timestamp.getSeconds())
-];
-
-timestamp.now = timestamp.time.join("");
-
-   var txtFld = document.getElementById('visChangeText');
-
-   if (txtFld) {
-      if (isHidden()){
-         txtFld.value += "TimeOut: "+ timestamp.now+"\n";
-		 console.log("timeOff: "+timestamp.now);
-		 }
-      else{
-		txtFld.value += "TimeIn: "+timestamp.now+"\n";
-		console.log("timeIn: "+timestamp.now);
-		}
-      }
-}
-
-function myFun()
-  {
-  var timestamp;
-
-// Date() prototype does not provide native number padding - let's add a method:
-Date.prototype.pad = function(integer) {
-    var result;
-    // Can't decide between ternary and slicing
-    // result = ("0" + integer).slice(-2); 
-    result = integer < 10
-                ? "0" + integer
-                : integer;
-
-    return result;
-};
-
-// Create a new Date() instance and add day, time and now properties
-timestamp = new Date();
-
-// Reorder the array entries to your own needs
-timestamp.day = [
-    timestamp.pad(timestamp.getDate()),
-    timestamp.pad(timestamp.getMonth() + 1), // getMonth() returns 0 to 11
-    timestamp.getFullYear()
-];
-
-timestamp.time = [
-    timestamp.pad(timestamp.getHours()),
-    timestamp.pad(timestamp.getMinutes()),
-    timestamp.pad(timestamp.getSeconds())
-];
-
-timestamp.now = timestamp.time.join("");
-//timestamp.now = timestamp.day.join("") + timestamp.time.join(""); //can have date too
-
-console.log("Time Start: "+timestamp.now);
-}
-</script>
-  
-  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -177,14 +38,14 @@ console.log("Time Start: "+timestamp.now);
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="DIPdashboard.php" class="logo"><b>SEEP</b></a>
+            <a href="DIPdashboard.html" class="logo"><b>SEEP</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.php#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.html#">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme">4</span>
                         </a>
@@ -194,7 +55,7 @@ console.log("Time Start: "+timestamp.now);
                                 <p class="green">You have 4 pending tasks</p>
                             </li>
                             <li>
-                                <a href="DIPteaching.php#">
+                                <a href="DIPteaching.html#">
                                     <div class="task-info">
                                         <div class="desc">Video Guide</div>
                                         <div class="percent">85%</div>
@@ -207,7 +68,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPpractice.php#">
+                                <a href="DIPpractice.html#">
                                     <div class="task-info">
                                         <div class="desc">Practice Questions</div>
                                         <div class="percent">60%</div>
@@ -220,7 +81,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPquiz.php#">
+                                <a href="DIPquiz.html#">
                                     <div class="task-info">
                                         <div class="desc">Quiz Questions</div>
                                         <div class="percent">20%</div>
@@ -233,7 +94,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <div class="task-info">
                                         <div class="desc">Review Model Drawing</div>
                                         <div class="percent">70%</div>
@@ -246,14 +107,14 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li class="external">
-                                <a href="DIPtodo_list.php#">See All Tasks</a>
+                                <a href="DIPtodo_list.html#">See All Tasks</a>
                             </li>
                         </ul>
                     </li>
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.php#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.html#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">3</span>
                         </a>
@@ -263,7 +124,7 @@ console.log("Time Start: "+timestamp.now);
                                 <p class="green">You have 3 new messages</p>
                             </li>
                             <li>
-                                <a href="DIPdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/friends/fr-02.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Andy Khong</span>
@@ -275,7 +136,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
 							                            <li>
-                                <a href="DIPdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ny.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Cheryl</span>
@@ -287,7 +148,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/friends/fr-11.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Palm View Admin</span>
@@ -299,7 +160,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.php#">See all messages</a>
+                                <a href="DIPdashboard.html#">See all messages</a>
                             </li>
                         </ul>
                     </li>
@@ -309,7 +170,7 @@ console.log("Time Start: "+timestamp.now);
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="DIPlogin.php">Logout</a></li>
+                    <li><a class="logout" href="DIPlogin.html">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -324,11 +185,11 @@ console.log("Time Start: "+timestamp.now);
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="DIPprofile.php"><img src="assets/img/friends/man.png" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered"><?php echo $_SESSION["userName"] ?></h5>
+              	  <p class="centered"><a href="DIPprofile.html"><img src="assets/img/friends/man.png" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered">Alex Tan</h5>
               	  	
                   <li class="mt">
-                      <a href="DIPdashboard.php">
+                      <a href="DIPdashboard.html">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
@@ -342,8 +203,8 @@ console.log("Time Start: "+timestamp.now);
                           <span>My Student Guide</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="DIPcalendar.php">Calendar</a></li>
-                          <li><a  href="DIPtodo_list.php">Todo List</a></li>
+                          <li><a  href="DIPcalendar.html">Calendar</a></li>
+                          <li><a  href="DIPtodo_list.html">Todo List</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -352,9 +213,9 @@ console.log("Time Start: "+timestamp.now);
                           <span>Model Drawing</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="DIPteaching.php">Video Guide</a></li>
-                          <li><a  href="DIPpractice.php">Practice Questions</a></li>
-                          <li class="active"><a  href="DIPquiz.php">Quiz Questions</a></li>
+                          <li><a  href="DIPteaching.html">Video Guide</a></li>
+                          <li><a  href="DIPpractice.html">Practice Questions</a></li>
+                          <li class="active"><a  href="DIPquiz.html">Quiz Questions</a></li>
                       </ul>
                   </li>
 	
@@ -375,7 +236,7 @@ console.log("Time Start: "+timestamp.now);
           	<h3><i class="fa fa-angle-right"></i> Quiz Questions</h3>
 			<div style="position: relative;">
             <div style="position: absolute; top: 0; right: 10px;" >
-			<a href="DIPlock_screen.php" class="btn btn-warning">Pause whatever I am doing</a></div>
+			<a href="DIPlock_screen.html" class="btn btn-warning">Pause whatever I am doing</a></div>
             </div><br><br>
           	<div class="row mt">
           		<div class="col-lg-12">
@@ -394,7 +255,7 @@ console.log("Time Start: "+timestamp.now);
           		</div>
           	</div>
 	  <div id="button">
-			<button type="button" class="btn btn-success" id="startbutton">Start Quiz</button> <a href="DIPpractice.php" class="btn btn-default">Back</a>
+			<button type="button" class="btn btn-success" id="startbutton">Start Quiz</button> <a href="DIPpractice.html" class="btn btn-default">Back</a>
 	  </div>
 <div class="row mt" id="drawing1" style="display: none">
 <div class="col-lg-12" >
@@ -418,7 +279,7 @@ console.log("Time Start: "+timestamp.now);
 			</canvas>
 		</div>
 		<br>
-			<font face="varela round" size="4" color="black">Shi Wei collected<input type="text" id="ans1" >used water bottles.</font>
+			<font face="varela round" size="4" color="black">Shi Wei collected<input type="text" name="txtJob" value="">used water bottles.</font>
 			<button type="button" class="btn btn-default" id="nextbutton" style="display: block">Next</button>
 	
 		
@@ -445,7 +306,7 @@ console.log("Time Start: "+timestamp.now);
 			</canvas>
 		</div>
 		<br>
-			<font face="varela round" size="4" color="black">Shop B sold<input type="text" name="txtJob" id="ans2">toy cars.</font>
+			<font face="varela round" size="4" color="black">Shop B sold<input type="text" name="txtJob" value="">toy cars.</font>
 			<button type="button" class="btn btn-default" id="nextbutton2" style="display: block" >Next</button>
 	
 </div>
@@ -472,7 +333,7 @@ console.log("Time Start: "+timestamp.now);
 			</canvas>
 		</div>
 		<br>
-			<font face="varela round" size="4" color="black">There are<input type="text" name="txtJob" id="ans3">boys.</font>
+			<font face="varela round" size="4" color="black">There are<input type="text" name="txtJob" value="">boys.</font>
 			<button type="button" class="btn btn-default" id="nextbutton3" style="display: block" >Next</button>
 	
 </div>
@@ -499,7 +360,7 @@ console.log("Time Start: "+timestamp.now);
 			</canvas>
 		</div>
 		<br>
-			<font face="varela round" size="4" color="black"><input type="text" name="txtJob" id="ans4">guppies are alive.</font>
+			<font face="varela round" size="4" color="black"><input type="text" name="txtJob" value="">guppies are alive.</font>
 			<button type="button" class="btn btn-default" id="nextbutton4" style="display: block" >Next</button>
 	
 </div>
@@ -525,7 +386,7 @@ console.log("Time Start: "+timestamp.now);
 			</canvas>
 		</div>
 		<br>
-			<font face="varela round" size="4" color="black">There are<input type="text" name="txtJob" id="ans5">pies altogether.</font>
+			<font face="varela round" size="4" color="black">There are<input type="text" name="txtJob" value="">pies altogether.</font>
 			<button type="button" class="btn btn-default" id="nextbutton5" style="display: block" >Next</button>
 	
 </div>
@@ -552,7 +413,7 @@ console.log("Time Start: "+timestamp.now);
 			</canvas>
 		</div>
 		<br>
-			<font face="varela round" size="4" color="black">She saves $<input type="text" name="txtJob" id="ans6">each day.</font>
+			<font face="varela round" size="4" color="black">She saves $<input type="text" name="txtJob" value="">each day.</font>
 			<button type="button" class="btn btn-default" id="nextbutton6" style="display: block" >Next</button>
 	
 </div>
@@ -578,7 +439,7 @@ console.log("Time Start: "+timestamp.now);
 			</canvas>
 		</div>
 		<br>
-			<font face="varela round" size="4" color="black">He needs to save for<input type="text" name="txtJob" id="ans7">days to have $18.</font>
+			<font face="varela round" size="4" color="black">He needs to save for<input type="text" name="txtJob" value="">days to have $18.</font>
 			<button type="button" class="btn btn-default" id="nextbutton7" style="display: block" >Next</button>
 	
 </div>
@@ -604,7 +465,7 @@ console.log("Time Start: "+timestamp.now);
 			</canvas>
 		</div>
 		<br>
-			<font face="varela round" size="4" color="black">3 cakes cost $<input type="text" name="txtJob" id="ans8">.</font>
+			<font face="varela round" size="4" color="black">3 cakes cost $<input type="text" name="txtJob" value="">.</font>
 			<button type="button" class="btn btn-default" id="nextbutton8" style="display: block" >Next</button>
 	
 </div>
@@ -631,7 +492,7 @@ console.log("Time Start: "+timestamp.now);
 			</canvas>
 		</div>
 		<br>
-			<font face="varela round" size="4" color="black">There are<input type="text" name="txtJob" id="ans9">pupils in each group.</font>
+			<font face="varela round" size="4" color="black">There are<input type="text" name="txtJob" value="">pupils in each group.</font>
 			<button type="button" class="btn btn-default" id="nextbutton9" style="display: block" >Next</button>
 	
 </div>
@@ -658,28 +519,11 @@ console.log("Time Start: "+timestamp.now);
 			</canvas>
 		</div>
 		<br>
-			<font face="varela round" size="4" color="black"><input type="text" name="txtJob" id="ans10">pens are not out of ink.</font><br>
-			<button type="button" class="btn btn-danger" id="finishbutton" style="display: block" >Finish</button>
-					<script>function suba(){
-					}
-					</script>
-		
-			<form method="POST" action="http://dip.net63.net/dip/theme/DIPquiz.php">
-			<a href="DIPteaching.php" class="btn btn-default">Back</a>
-			<!--forward to next page (quiz)-->
-			<a href="DIPquiz.php" class="btn btn-default">Next</a><br><br>
-		     	<input type ="hidden" textarea id="visChangeText" name="txtFld" style="width:300px;height:100px"></textarea>
-				<input type ="hidden" textarea id="correctwrong" name="txtCorrectWrong" style="width:300px;height:100px"></textarea>
-				<input type ="hidden" textarea id="timeStop" name="txtTimeStop" style="width:300px;height:100px"></textarea>
-		        <input type ="hidden" textarea id="score" name="txtMark" style="width:300px;height:100px"></textarea>
-			<button style="visibility: hidden;" id="submitt" onclick="suba()">Submit Question</button>
-			</form>
-
+			<font face="varela round" size="4" color="black"><input type="text" name="txtJob" value="">pens are not out of ink.</font><br>
+			<button type="button" class="btn btn-danger" id="submitbutton" style="display: block" >Finish</button>
 	</body>
 </div>
 </div>				
-
-
 			
 		</section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
@@ -689,7 +533,7 @@ console.log("Time Start: "+timestamp.now);
       <footer class="site-footer">
           <div class="text-center">
               2014 - Palm View Primary School 
-              <a href="DIPquiz.php#" class="go-top">
+              <a href="DIPquiz.html#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -711,7 +555,6 @@ console.log("Time Start: "+timestamp.now);
     <script src="assets/js/common-scripts.js"></script>
 
     <!--script for this page-->
-	
     
   <script>
       //custom select box
@@ -722,15 +565,5 @@ console.log("Time Start: "+timestamp.now);
 
   </script>
 <script src="assets/js/example4.js"></script>
-<input  textarea id="draw1" name="savedraw" ></textarea>
-<input type ="hidden" textarea id="draw2" name="savedraw" ></textarea>
-<input type ="hidden" textarea id="draw3" name="savedraw" ></textarea>
-<input type ="hidden" textarea id="draw4" name="savedraw" ></textarea>
-<input type ="hidden" textarea id="draw5" name="savedraw" ></textarea>
-<input type ="hidden" textarea id="draw6" name="savedraw" ></textarea>
-<input type ="hidden" textarea id="draw7" name="savedraw" ></textarea>
-<input type ="hidden" textarea id="draw8" name="savedraw" ></textarea>
-<input type ="hidden" textarea id="draw9" name="savedraw" ></textarea>
-<input type ="hidden" textarea id="draw10" name="savedraw" ></textarea>
   </body>
 </html>

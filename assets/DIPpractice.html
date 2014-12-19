@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <script type="text/javascript" src="\assets\js\retrieveQns.php"></script>
-<?php   
-session_start();
+  <?php   
+  session_start();
+  echo $_SESSION["userName"];
+  ?>
+  
+  
+  <?php 
 define('DB_HOST', 'mysql1.000webhost.com'); 
 define('DB_NAME', 'a2047226_dip'); 
 define('DB_USER','a2047226_myuser');
@@ -12,24 +17,21 @@ or die("Failed to connect to MySQL: " . mysql_error());
  
 //echo "'$_POST[txtFld]'";
 
- $name = $_SESSION["userName"];
-
-
+ 
 		   $sql = "INSERT INTO studentinfo ".
-			   "(Name, Nric, Time, TimeStamp, TypeOfQns, QuizResult) ".
-			   "VALUES('$name','S1232323J','$_POST[txtFld]', NOW()+ INTERVAL 1 HOUR, 'Practice','$_POST[txtQnsID]')";
+			   "(Name, Nric, Marks, Time) ".
+			   "VALUES('$_SESSION["userName"]','S1232323J',23,'$_POST[txtFld]')";
 		  $retval = mysql_query( $sql, $con );
-		  
-		  $sql2 = "INSERT INTO Keyword ".
-			   "(Name, Keywords, TimeStamp) ".
-			   "VALUES('$name','$_POST[txtKeyword]',NOW()+ INTERVAL 1 HOUR)";
-		  $retval2 = mysql_query( $sql2, $con );
 ?>
+ 
 
 <html lang="en">
   <head>
   
- 
+   <?php   
+  session_start();
+  $_SESSION["userName"] = '$_POST[user]';
+  ?>
   <script>
 
 function getHiddenProp(){
@@ -96,7 +98,7 @@ timestamp.now = timestamp.time.join("");
 
    if (txtFld) {
       if (isHidden()){
-         txtFld.value += "TimeOut: "+ timestamp.now+"\n";		 
+         txtFld.value += "TimeOut: "+ timestamp.now+"\n";
 		 console.log("timeOff: "+timestamp.now);
 		 }
       else{
@@ -144,6 +146,8 @@ timestamp.now = timestamp.time.join("");
 console.log("Time Start: "+timestamp.now);
 }
 </script>
+  
+  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -185,14 +189,14 @@ console.log("Time Start: "+timestamp.now);
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="DIPdashboard.php" class="logo"><b>SEEP</b></a>
+            <a href="DIPdashboard.html" class="logo"><b>SEEP</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.php#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.html#">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme">4</span>
                         </a>
@@ -202,7 +206,7 @@ console.log("Time Start: "+timestamp.now);
                                 <p class="green">You have 4 pending tasks</p>
                             </li>
                                                         <li>
-                                <a href="DIPteaching.php#">
+                                <a href="DIPteaching.html#">
                                     <div class="task-info">
                                         <div class="desc">Video Guide</div>
                                         <div class="percent">85%</div>
@@ -215,7 +219,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPpractice.php#">
+                                <a href="DIPpractice.html#">
                                     <div class="task-info">
                                         <div class="desc">Practice Questions</div>
                                         <div class="percent">60%</div>
@@ -228,7 +232,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPquiz.php#">
+                                <a href="DIPquiz.html#">
                                     <div class="task-info">
                                         <div class="desc">Quiz Questions</div>
                                         <div class="percent">20%</div>
@@ -241,7 +245,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <div class="task-info">
                                         <div class="desc">Review Model Drawing</div>
                                         <div class="percent">70%</div>
@@ -254,14 +258,14 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li class="external">
-                                <a href="DIPtodo_list.php#">See All Tasks</a>
+                                <a href="DIPtodo_list.html#">See All Tasks</a>
                             </li>
                         </ul>
                     </li>
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.php#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.html#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">3</span>
                         </a>
@@ -271,7 +275,7 @@ console.log("Time Start: "+timestamp.now);
                                 <p class="green">You have 3 new messages</p>
                             </li>
                             <li>
-                                <a href="DIPdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/friends/fr-02.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Andy Khong</span>
@@ -283,7 +287,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
 							                            <li>
-                                <a href="DIPdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ny.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Cheryl</span>
@@ -295,7 +299,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/friends/fr-11.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Palm View Admin</span>
@@ -307,7 +311,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.php#">See all messages</a>
+                                <a href="DIPdashboard.html#">See all messages</a>
                             </li>
                         </ul>
                     </li>
@@ -317,7 +321,7 @@ console.log("Time Start: "+timestamp.now);
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="DIPlogin.php">Logout</a></li>
+                    <li><a class="logout" href="DIPlogin.html">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -332,11 +336,11 @@ console.log("Time Start: "+timestamp.now);
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="DIPprofile.php"><img src="assets/img/friends/man.png" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered"><?php echo $_SESSION["userName"] ?></h5>
+              	  <p class="centered"><a href="DIPprofile.html"><img src="assets/img/friends/man.png" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered">Alex Tan</h5>
               	  	
                   <li class="mt">
-                      <a href="DIPdashboard.php">
+                      <a href="DIPdashboard.html">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
@@ -348,8 +352,8 @@ console.log("Time Start: "+timestamp.now);
                           <span>My Student Guide</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="DIPcalendar.php">Calendar</a></li>
-                          <li><a  href="DIPtodo_list.php">Todo List</a></li>
+                          <li><a  href="DIPcalendar.html">Calendar</a></li>
+                          <li><a  href="DIPtodo_list.html">Todo List</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -358,9 +362,9 @@ console.log("Time Start: "+timestamp.now);
                           <span>Model Drawing</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="DIPteaching.php">Video Guide</a></li>
-                          <li class="active"><a  href="DIPpractice.php">Practice Questions</a></li>
-                          <li><a  href="DIPquiz.php">Quiz Questions</a></li>
+                          <li><a  href="DIPteaching.html">Video Guide</a></li>
+                          <li class="active"><a  href="DIPpractice.html">Practice Questions</a></li>
+                          <li><a  href="DIPquiz.html">Quiz Questions</a></li>
                       </ul>
                   </li>
 	
@@ -376,13 +380,12 @@ console.log("Time Start: "+timestamp.now);
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
       <!--main content start-->
-
       <section id="main-content">
           <section class="wrapper site-min-height">
           	<h3><i class="fa fa-angle-right"></i> Practice Questions</h3>
 			<div style="position: relative;">
             <div style="position: absolute; top: 0; right: 10px;" >
-			<a href="DIPlock_screen.php" class="btn btn-warning">Pause whatever I am doing</a></div>
+			<a href="DIPlock_screen.html" class="btn btn-warning">Pause whatever I am doing</a></div>
             </div><br><br>
           	<div class="row mt">
           		<div class="col-lg-12">
@@ -391,28 +394,19 @@ console.log("Time Start: "+timestamp.now);
 				Now, let us get into practice mode.<br>
 				Click on the button below to generate practice questions, let's go!<br><br><br>
 				</p>
-				<font face="varela round" size="4" color="black">
+				
 				
 					<div class="row">
                                             
 						<div class="col-lg-12">
-						
-
-
-
-						
-
-
-
-
-				
-                                                    <button type="button" class="btn btn-success" onclick="generateQuestion()">Generate Question</button>   														
-<select id="selecttype" class="btn btn-theme dropdown-toggle">
-                                                <option value="">Random (+,-,x,/)</option>
-                                                <option value="A">Addition (+)</option>
-                                                <option value="S">Subtraction (-)</option>
-                                                <option value="M">Multiplication (x)</option>
-                                                <option value="D">Division (/)</option>
+										
+                                                    <button type="button" class="btn btn-success" onclick="generateQuestion()">Generate Question</button> <br>
+													<select id="selecttype">
+                                                <option value="">Random</option>
+                                                <option value="A">Addition</option>
+                                                <option value="S">Subtraction</option>
+                                                <option value="M">Multiplication</option>
+                                                <option value="D">Division</option>
                                               </select>
 										
 						</div>
@@ -427,8 +421,8 @@ console.log("Time Start: "+timestamp.now);
                 </div>
                 <!-- Keywords -->
                 <div class="col-sm-5">
-                   <!-- <div name ="keyword" id="keywords"></div> -->
-					
+                    <h4>Keywords:</h4>
+                    <div id="keywords"></div>
                 </div>
             </div>
             <!-- /.row -->
@@ -455,89 +449,20 @@ console.log("Time Start: "+timestamp.now);
 			<br><br><br><br>
 			
 					<script>function suba(){
+					alert("assignments completed");
 					}
 					</script>
 		
-			<form method="POST" action="http://dip.net63.net/dip/theme/DIPpractice.php">
-			<a href="DIPteaching.php" class="btn btn-default">Back</a>
+						<form method="POST" action="http://dip.net63.net/dip/theme/DIPpractice.html">
+			<a href="DIPteaching.html" class="btn btn-default">Back</a>
 			<!--forward to next page (quiz)-->
-			<a href="DIPquiz.php" class="btn btn-default">Next</a><br><br>
+			<a href="DIPquiz.html" class="btn btn-default">Next</a><br><br>
+						   <a href="DIPquiz.html"><button>Next</button></a>
 			<input type ="hidden" textarea id="visChangeText" name="txtFld" style="width:300px;height:100px"></textarea>
-			<input type ="hidden" textarea id="keywords" name="txtKeyword" style="width:300px;height:100px"></textarea>
-			<input type ="hidden" textarea id="QnsID" name="txtQnsID" style="width:300px;height:100px"></textarea>
-			   <button id="submitt" onclick="suba()" style="visibility: hidden;">Submit Question</button>
-			 </form>
-			<?php
-function retrieveQuestion(){
-    $dbhost = 'mysql1.000webhost.com';
-	$dbuser = 'a2047226_myuser';
-	$dbpass = '5xxxxx';
-	$conn = mysql_connect($dbhost, $dbuser, $dbpass);
-	if(! $conn )
-	{
-	  die('Could not connect: ' . mysql_error());
-	}
-
-      mysql_select_db('a2047226_dip');//selectdatabase
- 
-      $sql = "Select * FROM QuestionDB";
-      $result = mysql_query($sql, $conn);
-
-
-        $num_rows = mysql_num_rows($result);
-        $random = rand (0, $num_rows-1);
-        $count = 0;
-        while($row = mysql_fetch_array($result)) 
-        { 
-		        $QnsID = $row[0];
-                $type = $row[1];
-                $text = $row[2];
-                $A = $row[3];
-                $B = $row[4];
-                $C = $row[5];
-                $D = $row[6];
-                $E = $row[7];
-                $answer = $row[8];
-                echo "<div id='rType$count' style='display: none';>";
-                echo strip_tags($type);
-                echo "</div>";
-                echo "<div id='rText$count' style='display: none';>";
-                echo strip_tags($text);
-                echo "</div>";
-                echo "<div id='rA$count' style='display: none';>";
-                echo strip_tags($A);
-                echo "</div>";
-                echo "<div id='rB$count' style='display: none';>";
-                echo strip_tags($B);
-                echo "</div>";
-                echo "<div id='rC$count' style='display: none';>";
-                echo strip_tags($C);
-                echo "</div>";
-                echo "<div id='rD$count' style='display: none';>";
-                echo strip_tags($D);
-                echo "</div>";
-                echo "<div id='rE$count' style='display: none';>";
-                echo strip_tags($E);
-                echo "</div>";
-                echo "<div id='rAnswer$count' style='display: none';>";
-                echo strip_tags($answer);
-                echo "</div>";
-				echo "<div id='rQnsID$count' style='display: none';>";
-                echo strip_tags($QnsID);
-                echo "</div>";
-            
-            $count = $count + 1;
-        }
-echo "<div id='rCount' style='display: none';>";
-                echo strip_tags($count);
-                echo "</div>";
-        $array = array($type,$text,$A,$B,$C,$D,$E,$answer);
-        return $array;
-    
-}
-retrieveQuestion();
-?>	
-</font>
+			   <button onclick="suba()">Submit Question</button>
+			   <input type="button" value="Submit to next page" class="homebutton" id="btnHome" onClick="Javascript:window.location.href = 'DIPquiz.html';" />
+			</form>
+			
 		</section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
 
@@ -546,7 +471,7 @@ retrieveQuestion();
       <footer class="site-footer">
           <div class="text-center">
               2014 - Palm View Primary School 
-              <a href="DIPpractice.php#" class="go-top">
+              <a href="DIPpractice.html#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -579,7 +504,6 @@ retrieveQuestion();
       });
 
   </script>
-		
+
   </body>
 </html>
-					

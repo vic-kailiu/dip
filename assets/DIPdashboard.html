@@ -5,7 +5,7 @@ session_start();
  
 // Check, if username session is NOT set then this page will jump to login page
 if (!isset($_SESSION['username'])) {
-header('Location: DIPlogin.php');
+header('Location: DIPlogin.html');
 }
 ?>
 
@@ -18,7 +18,7 @@ header('Location: DIPlogin.php');
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>SEEP; Palm View Pri Online Portal (Teacher's Edition)</title>
+    <title>SEEP; Palm View Pri Online Portal</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -30,7 +30,7 @@ header('Location: DIPlogin.php');
 	<link href="assets/css/buttons.css" type="text/css" rel="stylesheet">
     
     <!-- Custom styles for this template -->
-    <link href="assets/css/style1.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
@@ -54,15 +54,83 @@ header('Location: DIPlogin.php');
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="Teacherdashboard.php" class="logo"><b>SEEP (Teacher's Edition)</b></a>
+            <a href="DIPdashboard.html" class="logo"><b>SEEP</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
-                    
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.html#">
+                            <i class="fa fa-tasks"></i>
+                            <span class="badge bg-theme">4</span>
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">You have 4 pending tasks</p>
+                            </li>
+                            <li>
+                                <a href="DIPteaching.html#">
+                                    <div class="task-info">
+                                        <div class="desc">Video Guide</div>
+                                        <div class="percent">85%</div>
+                                    </div>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+                                            <span class="sr-only">85% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="DIPpractice.html#">
+                                    <div class="task-info">
+                                        <div class="desc">Practice Questions</div>
+                                        <div class="percent">60%</div>
+                                    </div>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="DIPquiz.html#">
+                                    <div class="task-info">
+                                        <div class="desc">Quiz Questions</div>
+                                        <div class="percent">20%</div>
+                                    </div>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                            <span class="sr-only">20% Complete (Important)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="DIPdashboard.html#">
+                                    <div class="task-info">
+                                        <div class="desc">Review Model Drawing</div>
+                                        <div class="percent">70%</div>
+                                    </div>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                            <span class="sr-only">70% Complete (Important)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="external">
+                                <a href="DIPtodo_list.html#">See All Tasks</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="Teacherdashboard.php#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.html#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">3</span>
                         </a>
@@ -72,7 +140,7 @@ header('Location: DIPlogin.php');
                                 <p class="green">You have 3 new messages</p>
                             </li>
                            <li>
-                                <a href="Teacherdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/friends/fr-02.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Andy Khong</span>
@@ -84,7 +152,7 @@ header('Location: DIPlogin.php');
                                 </a>
                             </li>
 							                            <li>
-                                <a href="Teacherdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ny.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Cheryl</span>
@@ -96,7 +164,7 @@ header('Location: DIPlogin.php');
                                 </a>
                             </li>
                             <li>
-                                <a href="Teacherdashboard.php#">
+                                <a href="DIPdashboard.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/friends/fr-11.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Palm View Admin</span>
@@ -108,7 +176,7 @@ header('Location: DIPlogin.php');
                                 </a>
                             </li>
                             <li>
-                                <a href="Teacherdashboard.php#">See all messages</a>
+                                <a href="DIPdashboard.html#">See all messages</a>
                             </li>
                         </ul>
                     </li>
@@ -133,11 +201,11 @@ header('Location: DIPlogin.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="Teacherprofile.php"><img src="assets/img/friends/fr-02.jpg" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Andy Khong</h5>
+              	  <p class="centered"><a href="DIPprofile.html"><img src="assets/img/friends/man.png" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered">Alex Tan</h5>
               	  	
                   <li class="mt">
-                      <a class="active" href="Teacherdashboard.php">
+                      <a class="active" href="DIPdashboard.html">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
@@ -148,32 +216,23 @@ header('Location: DIPlogin.php');
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
-                          <span>My Guide</span>
+                          <span>My Student Guide</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="Teachercalendar.php">Calendar</a></li>
-                          <li><a  href="Teachertodo_list.php">Todo List</a></li>
+                          <li><a  href="DIPcalendar.html">Calendar</a></li>
+                          <li><a  href="DIPtodo_list.html">Todo List</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="fa fa-folder"></i>
-                          <span>Students' Data</span>
+                          <i class="fa fa-pencil"></i>
+                          <span>Model Drawing</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="Teacherstudentsprogress.php">Students' Progress</a></li>
+                          <li><a  href="DIPteaching.html">Video Guide</a></li>
+                          <li><a  href="DIPpractice.html">Practice Questions</a></li>
+                          <li><a  href="DIPquiz.html">Quiz Questions</a></li>
                       </ul>
-                  </li>
-				  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-asterisk"></i>
-                          <span>Create New Content </span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="Teacherteachingguide.php">Teaching Guide</a></li>
-						  <li><a  href="Teacherpracticequestions.php">Practice Questions</a></li>
-						  <li><a  href="Teacherquiz.php">Quiz</a></li>
-						  </ul>
                   </li>
 	
                   
@@ -196,35 +255,35 @@ header('Location: DIPlogin.php');
                   	<div class="row mtbox">
                   		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
                   			<div class="box1">
-					  			<span class="li_settings"></span>
+					  			<img src="assets/smallicons/flag.png" style="width:80px;height:80px">
 					  			<h3>Settings</h3>
                   			</div>
 					  			<p>Edit your settings here</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_stack"></span>
+					  			<img src="assets/smallicons/Briefcase.png" style="width:80px;height:80px">
 					  			<h3>Files</h3>
                   			</div>
 					  			<p>4 New files are uploaded</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_mail"></span>
+					  			<img src="assets/smallicons/open-letter.png" style="width:80px;height:80px">
 					  			<h3>Mail</h3>
                   			</div>
 					  			<p>You have 23 unread messages in your inbox.</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_note"></span>
+					  			<img src="assets/smallicons/bookshelf.png" style="width:80px;height:80px">
 					  			<h3>Notes</h3>
                   			</div>
 					  			<p>You have 2 new notes.</p>
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<span class="li_bubble"></span>
+					  			<img src="assets/smallicons/rocket.png" style="width:80px;height:80px">
 					  			<h3>Talk!</h3>
                   			</div>
 					  			<p>Discuss your views with fellow friends!</p>
@@ -273,7 +332,7 @@ header('Location: DIPlogin.php');
 								</div>
 								<div class="blog2-text">
 									<p>Learn how to tackle various model drawing questions 
-								  <a href="DIPteaching.php">here</a>.</p>
+								  <a href="DIPteaching.html">here</a>.</p>
 								</div>
 							
 							</div>
@@ -348,7 +407,7 @@ header('Location: DIPlogin.php');
                       	</div>
                       	<div class="details">
                       		<p><muted>2 Minutes Ago</muted><br/>
-                      		   <a href="#">You</a> published 2 learning materials.<br/>
+                      		   <a href="#">Prof. Andy Khong</a> published 2 learning materials.<br/>
                       		</p>
                       	</div>
                       </div>
@@ -390,7 +449,7 @@ header('Location: DIPlogin.php');
       <footer class="site-footer">
           <div class="text-center">
               2014 - Palm View Primary School
-              <a href="Teacherdashboard.php#" class="go-top">
+              <a href="DIPdashboard.html#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -409,7 +468,7 @@ header('Location: DIPlogin.php');
 
 
     <!--common script for all pages-->
-    <script src="assets/js/common-scripts1.js"></script>
+    <script src="assets/js/common-scripts.js"></script>
     
     <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
@@ -418,7 +477,26 @@ header('Location: DIPlogin.php');
     <script src="assets/js/sparkline-chart.js"></script>    
 	<script src="assets/js/zabuto_calendar.js"></script>	
 	
-	
+	<script type="text/javascript">
+        $(document).ready(function () {
+        var unique_id = $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'Moblie Learning Update',
+            // (string | mandatory) the text inside the notification
+            text: 'SEEP app is now available on iOS and Google Play. Click <b>here</b> to download app.',
+            // (string | optional) the image to display on the left
+            image: 'assets/img/friends/fr-09.jpg',
+            // (bool | optional) if you want it to fade out on its own or just sit there
+            sticky: true,
+            // (int | optional) the time you want it to be alive for before fading out
+            time: '',
+            // (string | optional) the class name you want to apply to that specific message
+            class_name: 'my-sticky-class'
+        });
+
+        return false;
+        });
+	</script>
 	
 	<script type="application/javascript">
         $(document).ready(function () {

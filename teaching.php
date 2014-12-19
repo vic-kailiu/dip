@@ -1,153 +1,6 @@
 <!DOCTYPE html>
-<script type="text/javascript" src="\assets\js\retrieveQns.php"></script>
-  <?php   
-  session_start();
-  echo $_SESSION["userName"];
-  ?>
-  
-  
-  <?php 
-define('DB_HOST', 'mysql1.000webhost.com'); 
-define('DB_NAME', 'a2047226_dip'); 
-define('DB_USER','a2047226_myuser');
-define('DB_PASSWORD','5xxxxx'); 
-$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error()); $db=mysql_select_db(DB_NAME,$con) 
-or die("Failed to connect to MySQL: " . mysql_error()); 
- 
- 
-//echo "'$_POST[txtFld]'";
-
- 
-		   $sql = "INSERT INTO studentinfo ".
-			   "(Name, Nric, Marks, Time) ".
-			   "VALUES('$_SESSION["userName"]','S1232323J',23,'$_POST[txtFld]')";
-		  $retval = mysql_query( $sql, $con );
-?>
- 
-
 <html lang="en">
   <head>
-  
-   <?php   
-  session_start();
-  $_SESSION["userName"] = '$_POST[user]';
-  ?>
-  <script>
-
-function getHiddenProp(){
-    var prefixes = ['webkit','moz','ms','o'];
-    
-    // if 'hidden' is natively supported just return it
-    if ('hidden' in document) return 'hidden';
-    
-    // otherwise loop over all the known prefixes until we find one
-    for (var i = 0; i < prefixes.length; i++){
-        if ((prefixes[i] + 'Hidden') in document) 
-            return prefixes[i] + 'Hidden';
-    }
-    // otherwise it's not supported
-    return null;
-}
-
-function isHidden() {
-    var prop = getHiddenProp();
-    if (!prop) return false;
-    
-    return document[prop];
-}
-
-var visProp = getHiddenProp();
-if (visProp) {
-  var evtname = visProp.replace(/[H|h]idden/,'') + 'visibilitychange';
-  document.addEventListener(evtname, visChange);
-}
-
-function visChange() {
-  var timestamp;
-
-// Date() prototype does not provide native number padding - let's add a method:
-Date.prototype.pad = function(integer) {
-    var result;
-    // Can't decide between ternary and slicing
-    // result = ("0" + integer).slice(-2); 
-    result = integer < 10
-                ? "0" + integer
-                : integer;
-    return result;
-};
-
-// Create a new Date() instance and add day, time and now properties
-timestamp = new Date();
-
-// Reorder the array entries to your own needs
-timestamp.day = [
-    timestamp.pad(timestamp.getDate()),
-    timestamp.pad(timestamp.getMonth() + 1), // getMonth() returns 0 to 11
-    timestamp.getFullYear()
-];
-
-timestamp.time = [
-    timestamp.pad(timestamp.getHours()),
-    timestamp.pad(timestamp.getMinutes()),
-    timestamp.pad(timestamp.getSeconds())
-];
-
-timestamp.now = timestamp.time.join("");
-
-   var txtFld = document.getElementById('visChangeText');
-
-   if (txtFld) {
-      if (isHidden()){
-         txtFld.value += "TimeOut: "+ timestamp.now+"\n";
-		 console.log("timeOff: "+timestamp.now);
-		 }
-      else{
-		txtFld.value += "TimeIn: "+timestamp.now+"\n";
-		console.log("timeIn: "+timestamp.now);
-		}
-      }
-}
-
-function myFun()
-  {
-  var timestamp;
-
-// Date() prototype does not provide native number padding - let's add a method:
-Date.prototype.pad = function(integer) {
-    var result;
-    // Can't decide between ternary and slicing
-    // result = ("0" + integer).slice(-2); 
-    result = integer < 10
-                ? "0" + integer
-                : integer;
-
-    return result;
-};
-
-// Create a new Date() instance and add day, time and now properties
-timestamp = new Date();
-
-// Reorder the array entries to your own needs
-timestamp.day = [
-    timestamp.pad(timestamp.getDate()),
-    timestamp.pad(timestamp.getMonth() + 1), // getMonth() returns 0 to 11
-    timestamp.getFullYear()
-];
-
-timestamp.time = [
-    timestamp.pad(timestamp.getHours()),
-    timestamp.pad(timestamp.getMinutes()),
-    timestamp.pad(timestamp.getSeconds())
-];
-
-timestamp.now = timestamp.time.join("");
-//timestamp.now = timestamp.day.join("") + timestamp.time.join(""); //can have date too
-
-console.log("Time Start: "+timestamp.now);
-}
-</script>
-  
-  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -165,10 +18,6 @@ console.log("Time Start: "+timestamp.now);
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/style-responsive.css" rel="stylesheet">
-	<!-- Custom CSS for questions -->
-    <link href="css/questions.css" rel="stylesheet">
-	<!-- Custom CSS -->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -189,14 +38,14 @@ console.log("Time Start: "+timestamp.now);
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="DIPdashboard.html" class="logo"><b>SEEP</b></a>
+            <a href="DIPdashboard.php" class="logo"><b>SEEP</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme">4</span>
                         </a>
@@ -205,8 +54,8 @@ console.log("Time Start: "+timestamp.now);
                             <li>
                                 <p class="green">You have 4 pending tasks</p>
                             </li>
-                                                        <li>
-                                <a href="DIPteaching.html#">
+                            <li>
+                                <a href="DIPteaching.php#">
                                     <div class="task-info">
                                         <div class="desc">Video Guide</div>
                                         <div class="percent">85%</div>
@@ -219,7 +68,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPpractice.html#">
+                                <a href="DIPpractice.php#">
                                     <div class="task-info">
                                         <div class="desc">Practice Questions</div>
                                         <div class="percent">60%</div>
@@ -232,7 +81,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPquiz.html#">
+                                <a href="DIPquiz.php#">
                                     <div class="task-info">
                                         <div class="desc">Quiz Questions</div>
                                         <div class="percent">20%</div>
@@ -245,7 +94,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.html#">
+                                <a href="DIPdashboard.php#">
                                     <div class="task-info">
                                         <div class="desc">Review Model Drawing</div>
                                         <div class="percent">70%</div>
@@ -258,14 +107,14 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li class="external">
-                                <a href="DIPtodo_list.html#">See All Tasks</a>
+                                <a href="DIPtodo_list.php#">See All Tasks</a>
                             </li>
                         </ul>
                     </li>
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">3</span>
                         </a>
@@ -275,7 +124,7 @@ console.log("Time Start: "+timestamp.now);
                                 <p class="green">You have 3 new messages</p>
                             </li>
                             <li>
-                                <a href="DIPdashboard.html#">
+                                <a href="index.html#">
                                     <span class="photo"><img alt="avatar" src="img/friends/fr-02.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Andy Khong</span>
@@ -287,7 +136,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
 							                            <li>
-                                <a href="DIPdashboard.html#">
+                                <a href="index.html#">
                                     <span class="photo"><img alt="avatar" src="img/ny.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Cheryl</span>
@@ -299,7 +148,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.html#">
+                                <a href="index.html#">
                                     <span class="photo"><img alt="avatar" src="img/friends/fr-11.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Palm View Admin</span>
@@ -311,7 +160,7 @@ console.log("Time Start: "+timestamp.now);
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.html#">See all messages</a>
+                                <a href="index.html#">See all messages</a>
                             </li>
                         </ul>
                     </li>
@@ -321,7 +170,7 @@ console.log("Time Start: "+timestamp.now);
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="DIPlogin.html">Logout</a></li>
+                    <li><a class="logout" href="logout.php">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -336,39 +185,41 @@ console.log("Time Start: "+timestamp.now);
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="DIPprofile.html"><img src="img/friends/man.png" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="DIPprofile.php"><img src="img/friends/man.png" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">Alex Tan</h5>
               	  	
                   <li class="mt">
-                      <a href="DIPdashboard.html">
+                      <a href="DIPdashboard.php">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
                   </li>
 
-                   <li class="sub-menu">
+
+                  <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-book"></i>
                           <span>My Student Guide</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="DIPcalendar.html">Calendar</a></li>
-                          <li><a  href="DIPtodo_list.html">Todo List</a></li>
+                          <li><a  href="DIPcalendar.php">Calendar</a></li>
+                          <li><a  href="DIPtodo_list.php">Todo List</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
                       <a class="active" href="javascript:;" >
                           <i class="fa fa-pencil"></i>
                           <span>Model Drawing</span>
+						
                       </a>
                       <ul class="sub">
-                          <li><a  href="DIPteaching.html">Video Guide</a></li>
-                          <li class="active"><a  href="DIPpractice.html">Practice Questions</a></li>
-                          <li><a  href="DIPquiz.html">Quiz Questions</a></li>
+                          <li class="active"><a  href="DIPteaching.php">Video Guide</a></li>
+                          <li><a  href="DIPpractice.php">Practice Questions</a></li>
+                          <li><a  href="DIPquiz.php">Quiz Questions</a></li>
                       </ul>
                   </li>
 	
- 
+                  
 
               </ul>
               <!-- sidebar menu end-->
@@ -382,86 +233,101 @@ console.log("Time Start: "+timestamp.now);
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-          	<h3><i class="fa fa-angle-right"></i> Practice Questions</h3>
+          	<h3><i class="fa fa-angle-right"></i> Video Guide</h3>
 			<div style="position: relative;">
             <div style="position: absolute; top: 0; right: 10px;" >
-			<a href="DIPlock_screen.html" class="btn btn-warning">Pause whatever I am doing</a></div>
+			<a href="DIPlock_screen.php" class="btn btn-warning">Pause whatever I am doing</a></div>
             </div><br><br>
           	<div class="row mt">
           		<div class="col-lg-12">
           		<p>
-				We have previously watched videos about different types of model drawing.<br>
-				Now, let us get into practice mode.<br>
-				Click on the button below to generate practice questions, let's go!<br><br><br>
+				Please watch the following videos about model drawing then head on to the practice questions. <br>
 				</p>
-				
-				
-					<div class="row">
-                                            
-						<div class="col-lg-12">
-										
-                                                    <button type="button" class="btn btn-success" onclick="generateQuestion()">Generate Question</button> <br>
-													<select id="selecttype">
-                                                <option value="">Random</option>
-                                                <option value="A">Addition</option>
-                                                <option value="S">Subtraction</option>
-                                                <option value="M">Multiplication</option>
-                                                <option value="D">Division</option>
-                                              </select>
-										
-						</div>
-					</div>
-					
-					<!-- For Question Text and Keywords -->
-            <div class="row">
-                <!-- Question Text-->
-                <div class="col-sm-5">
-                    <h4 id="questionId">Question:</h4>
-                    <div id="text"></div>
-                </div>
-                <!-- Keywords -->
-                <div class="col-sm-5">
-                    <h4>Keywords:</h4>
-                    <div id="keywords"></div>
-                </div>
-            </div>
-            <!-- /.row -->
-
-            <!-- For Question -->
-            <div class="row">
-                <!-- Question-->
-                <div class="col-sm-5" id="question">
-
-                </div>
-                <!-- Drag Source -->
-                <div class="col-sm-5" id="drag_source">
-
-                </div>
-            </div>
-            <!-- /.row -->
-            <div id="answer"></div>
-					
-					
-				</div>
-				
+          		</div>
           	</div>
-			<!--back to previous page (teaching)-->
-			<br><br><br><br>
+                <div class="showback">
+      			<h4><i class="fa fa-angle-right"></i> Model Drawing- <i>Method</i></h4>
+					<!-- 16:9 aspect ratio -->
+					<div class="embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item" src="http://www.youtube.com/embed/Jx9mtdx-7aQ" frameborder="0" allowfullscreen></iframe>
+					</div>
+
+
+	<?php
+                         function studentProgress(){
+                           $dbhost = 'mysql1.000webhost.com';
+	                $dbuser = 'a2047226_myuser';
+	                $dbpass = '5xxxxx';
+	                  $conn = mysql_connect($dbhost, $dbuser, $dbpass);
+	                if(! $conn )
+	             {
+	                       die('Could not connect: ' . mysql_error());
+	             }
+ 
+                   mysql_select_db('a2047226_dip');//selectdatabase
+ 
+                  $sql = "Select * FROM TeachingGuide";
+                  $result = mysql_query($sql, $conn);
+ 
+ 
+
+ 
+                 $count = 1;
+                while($row = mysql_fetch_array($result)) 
+               { 
+                      $type = $row[0];
+                      $title = $row[1];
+                      $code = $row[2];
+
+                      
+                       
+                       echo "</div>";
+                       echo "<div class='showback'>";
+                       echo "<h4>";
+                       echo strip_tags($title);
+                      
+                       echo "-";
+                       echo strip_tags($type);
+                       echo "</h4>";
+                       echo "<div class='embed-responsive embed-responsive-16by9'>"; 
+                       echo "<iframe class='embed-responsive-item' src='";
+                       echo strip_tags($code);
+                       echo "' frameborder='0' allowfullscreen></iframe>";
+                       echo "</div>";
+                       echo "</div>";
+                       
+                       
+                         
+                      
+                       
+                       
+               
+ 
+                     $count = $count+1;
+ 
+ 
+             }       
+
+     }
+     studentProgress();
+ 
+?>	
+
+
+
 			
-					<script>function suba(){
-					alert("assignments completed");
-					}
-					</script>
-		
-						<form method="POST" action="http://dip.net63.net/dip/theme/DIPpractice.html">
-			<a href="DIPteaching.html" class="btn btn-default">Back</a>
-			<!--forward to next page (quiz)-->
-			<a href="DIPquiz.html" class="btn btn-default">Next</a><br><br>
-						   <a href="DIPquiz.html"><button>Next</button></a>
-			<input type ="hidden" textarea id="visChangeText" name="txtFld" style="width:300px;height:100px"></textarea>
-			   <button onclick="suba()">Submit Question</button>
-			   <input type="button" value="Submit to next page" class="homebutton" id="btnHome" onClick="Javascript:window.location.href = 'DIPquiz.html';" />
-			</form>
+			</div>
+			
+
+
+        
+
+			<br><br><br>
+			
+			<a href="DIPpractice.php" class="btn btn-default">Next</a>
+			
+
+			
 			
 		</section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
@@ -471,7 +337,7 @@ console.log("Time Start: "+timestamp.now);
       <footer class="site-footer">
           <div class="text-center">
               2014 - Palm View Primary School 
-              <a href="DIPpractice.html#" class="go-top">
+              <a href="DIPteaching.php#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -487,15 +353,13 @@ console.log("Time Start: "+timestamp.now);
     <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-	
 
 
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
+
+    <!--script for this page-->
     
-
-	<script src="js/sb-admin-2.js"></script>
-
   <script>
       //custom select box
 
@@ -506,4 +370,4 @@ console.log("Time Start: "+timestamp.now);
   </script>
 
   </body>
-</html>
+</html>	

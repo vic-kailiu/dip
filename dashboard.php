@@ -5,13 +5,141 @@ session_start();
  
 // Check, if username session is NOT set then this page will jump to login page
 if (!isset($_SESSION['username'])) {
-header('Location: DIPlogin.html');
+header('Location: DIPlogin.php');
 }
+  
+//echo $_SESSION["userName"];
+define('DB_HOST', 'mysql1.000webhost.com'); 
+define('DB_NAME', 'a2047226_dip'); 
+define('DB_USER','a2047226_myuser');
+define('DB_PASSWORD','5xxxxx'); 
+$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error()); $db=mysql_select_db(DB_NAME,$con) 
+or die("Failed to connect to MySQL: " . mysql_error()); 
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
+  <script>
+
+function getHiddenProp(){
+    var prefixes = ['webkit','moz','ms','o'];
+    
+    // if 'hidden' is natively supported just return it
+    if ('hidden' in document) return 'hidden';
+    
+    // otherwise loop over all the known prefixes until we find one
+    for (var i = 0; i < prefixes.length; i++){
+        if ((prefixes[i] + 'Hidden') in document) 
+            return prefixes[i] + 'Hidden';
+    }
+    // otherwise it's not supported
+    return null;
+}
+
+function isHidden() {
+    var prop = getHiddenProp();
+    if (!prop) return false;
+    
+    return document[prop];
+}
+
+var visProp = getHiddenProp();
+if (visProp) {
+  var evtname = visProp.replace(/[H|h]idden/,'') + 'visibilitychange';
+  document.addEventListener(evtname, visChange);
+}
+
+function visChange() {
+  var timestamp;
+
+// Date() prototype does not provide native number padding - let's add a method:
+Date.prototype.pad = function(integer) {
+    var result;
+    // Can't decide between ternary and slicing
+    // result = ("0" + integer).slice(-2); 
+    result = integer < 10
+                ? "0" + integer
+                : integer;
+    return result;
+};
+
+// Create a new Date() instance and add day, time and now properties
+timestamp = new Date();
+
+// Reorder the array entries to your own needs
+timestamp.day = [
+    timestamp.pad(timestamp.getDate()),
+    timestamp.pad(timestamp.getMonth() + 1), // getMonth() returns 0 to 11
+    timestamp.getFullYear()
+];
+
+timestamp.time = [
+    timestamp.pad(timestamp.getHours()),
+    timestamp.pad(timestamp.getMinutes()),
+    timestamp.pad(timestamp.getSeconds())
+];
+
+timestamp.now = timestamp.time.join("");
+
+   var txtFld = document.getElementById('visChangeText');
+
+   if (txtFld) {
+      if (isHidden()){
+         txtFld.value += "TimeOut: "+ timestamp.now+"\n";		 
+		 console.log("timeOff: "+timestamp.now);
+		 }
+      else{
+		txtFld.value += "TimeIn: "+timestamp.now+"\n";
+		console.log("timeIn: "+timestamp.now);
+		}
+      }
+}
+
+function myFun()
+  {
+  var timestamp;
+
+// Date() prototype does not provide native number padding - let's add a method:
+Date.prototype.pad = function(integer) {
+    var result;
+    // Can't decide between ternary and slicing
+    // result = ("0" + integer).slice(-2); 
+    result = integer < 10
+                ? "0" + integer
+                : integer;
+
+    return result;
+};
+
+// Create a new Date() instance and add day, time and now properties
+timestamp = new Date();
+
+// Reorder the array entries to your own needs
+timestamp.day = [
+    timestamp.pad(timestamp.getDate()),
+    timestamp.pad(timestamp.getMonth() + 1), // getMonth() returns 0 to 11
+    timestamp.getFullYear()
+];
+
+timestamp.time = [
+    timestamp.pad(timestamp.getHours()),
+    timestamp.pad(timestamp.getMinutes()),
+    timestamp.pad(timestamp.getSeconds())
+];
+
+timestamp.now = timestamp.time.join("");
+//timestamp.now = timestamp.day.join("") + timestamp.time.join(""); //can have date too
+
+console.log("Time Start: "+timestamp.now);
+}
+</script>
+  
+  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -54,14 +182,14 @@ header('Location: DIPlogin.html');
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="DIPdashboard.html" class="logo"><b>SEEP</b></a>
+            <a href="DIPdashboard.php" class="logo"><b>SEEP</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.php#">
                             <i class="fa fa-tasks"></i>
                             <span class="badge bg-theme">4</span>
                         </a>
@@ -71,7 +199,7 @@ header('Location: DIPlogin.html');
                                 <p class="green">You have 4 pending tasks</p>
                             </li>
                             <li>
-                                <a href="DIPteaching.html#">
+                                <a href="DIPteaching.php#">
                                     <div class="task-info">
                                         <div class="desc">Video Guide</div>
                                         <div class="percent">85%</div>
@@ -84,7 +212,7 @@ header('Location: DIPlogin.html');
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPpractice.html#">
+                                <a href="DIPpractice.php#">
                                     <div class="task-info">
                                         <div class="desc">Practice Questions</div>
                                         <div class="percent">60%</div>
@@ -97,7 +225,7 @@ header('Location: DIPlogin.html');
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPquiz.html#">
+                                <a href="DIPquiz.php#">
                                     <div class="task-info">
                                         <div class="desc">Quiz Questions</div>
                                         <div class="percent">20%</div>
@@ -110,7 +238,7 @@ header('Location: DIPlogin.html');
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.html#">
+                                <a href="DIPdashboard.php#">
                                     <div class="task-info">
                                         <div class="desc">Review Model Drawing</div>
                                         <div class="percent">70%</div>
@@ -123,14 +251,14 @@ header('Location: DIPlogin.html');
                                 </a>
                             </li>
                             <li class="external">
-                                <a href="DIPtodo_list.html#">See All Tasks</a>
+                                <a href="DIPtodo_list.php#">See All Tasks</a>
                             </li>
                         </ul>
                     </li>
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.html#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="DIPdashboard.php#">
                             <i class="fa fa-envelope-o"></i>
                             <span class="badge bg-theme">3</span>
                         </a>
@@ -140,7 +268,7 @@ header('Location: DIPlogin.html');
                                 <p class="green">You have 3 new messages</p>
                             </li>
                            <li>
-                                <a href="DIPdashboard.html#">
+                                <a href="DIPdashboard.php#">
                                     <span class="photo"><img alt="avatar" src="img/friends/fr-02.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Andy Khong</span>
@@ -152,7 +280,7 @@ header('Location: DIPlogin.html');
                                 </a>
                             </li>
 							                            <li>
-                                <a href="DIPdashboard.html#">
+                                <a href="DIPdashboard.php#">
                                     <span class="photo"><img alt="avatar" src="img/ny.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Cheryl</span>
@@ -164,7 +292,7 @@ header('Location: DIPlogin.html');
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.html#">
+                                <a href="DIPdashboard.php#">
                                     <span class="photo"><img alt="avatar" src="img/friends/fr-11.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Palm View Admin</span>
@@ -176,7 +304,7 @@ header('Location: DIPlogin.html');
                                 </a>
                             </li>
                             <li>
-                                <a href="DIPdashboard.html#">See all messages</a>
+                                <a href="DIPdashboard.php#">See all messages</a>
                             </li>
                         </ul>
                     </li>
@@ -201,11 +329,11 @@ header('Location: DIPlogin.html');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="DIPprofile.html"><img src="img/friends/man.png" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Alex Tan</h5>
+              	  <p class="centered"><a href="DIPprofile.php"><img src="img/friends/man.png" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered"><?php echo $_SESSION["userName"] ?></h5>
               	  	
                   <li class="mt">
-                      <a class="active" href="DIPdashboard.html">
+                      <a class="active" href="DIPdashboard.php">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
@@ -219,8 +347,8 @@ header('Location: DIPlogin.html');
                           <span>My Student Guide</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="DIPcalendar.html">Calendar</a></li>
-                          <li><a  href="DIPtodo_list.html">Todo List</a></li>
+                          <li><a  href="DIPcalendar.php">Calendar</a></li>
+                          <li><a  href="DIPtodo_list.php">Todo List</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -229,9 +357,9 @@ header('Location: DIPlogin.html');
                           <span>Model Drawing</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="DIPteaching.html">Video Guide</a></li>
-                          <li><a  href="DIPpractice.html">Practice Questions</a></li>
-                          <li><a  href="DIPquiz.html">Quiz Questions</a></li>
+                          <li><a  href="DIPteaching.php">Video Guide</a></li>
+                          <li><a  href="DIPpractice.php">Practice Questions</a></li>
+                          <li><a  href="DIPquiz.php">Quiz Questions</a></li>
                       </ul>
                   </li>
 	
@@ -262,7 +390,7 @@ header('Location: DIPlogin.html');
                   		</div>
                   		<div class="col-md-2 col-sm-2 box0">
                   			<div class="box1">
-					  			<img src="smallicons/Briefcase.png" style="width:80px;height:80px">
+					  			<img src="smallicons/briefcase.png" style="width:80px;height:80px">
 					  			<h3>Files</h3>
                   			</div>
 					  			<p>4 New files are uploaded</p>
@@ -332,7 +460,7 @@ header('Location: DIPlogin.html');
 								</div>
 								<div class="blog2-text">
 									<p>Learn how to tackle various model drawing questions 
-								  <a href="DIPteaching.html">here</a>.</p>
+								  <a href="DIPteaching.php">here</a>.</p>
 								</div>
 							
 							</div>
@@ -449,7 +577,7 @@ header('Location: DIPlogin.html');
       <footer class="site-footer">
           <div class="text-center">
               2014 - Palm View Primary School
-              <a href="DIPdashboard.html#" class="go-top">
+              <a href="DIPdashboard.php#" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>
@@ -496,7 +624,7 @@ header('Location: DIPlogin.html');
 
         return false;
         });
-	</script>
+	</script>	
 	
 	<script type="application/javascript">
         $(document).ready(function () {

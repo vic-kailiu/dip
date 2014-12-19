@@ -10,18 +10,18 @@
     <title>SEEP; Palm View Pri Online Portal (Teacher's Edition)</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-	<link href="assets/css/buttons.css" type="text/css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="css/buttons.css" type="text/css" rel="stylesheet">
         
     <!-- Custom styles for this template -->
-    <link href="assets/css/style1.css" rel="stylesheet">
-    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link href="css/style1.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
 	<!-- Custom CSS for questions -->
-    <link href="assets/css/questions.css" rel="stylesheet">
+    <link href="css/questions.css" rel="stylesheet">
 	<!-- Custom CSS -->
-    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -61,7 +61,7 @@
                             </li>
                            <li>
                                 <a href="Teacherdashboard.php#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/friends/fr-02.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="img/friends/fr-02.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Andy Khong</span>
                                     <span class="time">Just now</span>
@@ -73,7 +73,7 @@
                             </li>
 							                            <li>
                                 <a href="Teacherdashboard.php#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ny.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="img/ny.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Cheryl</span>
                                     <span class="time">25 mins.</span>
@@ -85,7 +85,7 @@
                             </li>
                             <li>
                                 <a href="Teacherdashboard.php#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/friends/fr-11.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src="img/friends/fr-11.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Palm View Admin</span>
                                     <span class="time">40 mins.</span>
@@ -122,7 +122,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="Teacherprofile.php"><img src="assets/img/friends/fr-02.jpg" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="Teacherprofile.php"><img src="img/friends/fr-02.jpg" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">Andy Khong</h5>
               	  	
                   <li class="mt">
@@ -301,21 +301,21 @@ studentProgress();
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="assets/js/jquery.scrollTo.min.js"></script>
-    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
 	
 
 
     <!--common script for all pages-->
-    <script src="assets/js/common-scripts1.js"></script>
+    <script src="js/common-scripts1.js"></script>
     
 
-	<script src="assets/js/sb-admin-2.js"></script>
+	<script src="js/sb-admin-2.js"></script>
 
   <script>
       //custom select box

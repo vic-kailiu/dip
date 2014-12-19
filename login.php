@@ -4,9 +4,8 @@ define('DB_HOST', 'mysql1.000webhost.com');
 define('DB_NAME', 'a2047226_dip'); 
 define('DB_USER','a2047226_myuser');
 define('DB_PASSWORD','5xxxxx'); 
-$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error()); $db=mysql_select_db(DB_NAME,$con) 
-or die("Failed to connect to MySQL: " . mysql_error()); 
-
+$con=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die("Failed to connect to MySQL: " . mysql_error()); 
+$db=mysql_select_db(DB_NAME,$con) or die("Failed to connect to MySQL: " . mysql_error()); 
 
 SignIn(); 
 function SignIn() 
@@ -27,7 +26,7 @@ function SignIn()
       $_SESSION['username'] = $row['password'];
 	  $_SESSION['userName'] = $row['username'];
       if ($row['status']=='s') {
-       header('Location:http://dip.net63.net/dip/theme/DIPdashboard.php');
+       header('Location:dashboard.php');
        echo "SUCCESSFULLY LOGIN TO USER PROFILE PAGE..."; 
     }
        else

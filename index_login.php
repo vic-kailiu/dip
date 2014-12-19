@@ -10,14 +10,14 @@
     <title>SEEP; Palmview Pri Online Portal</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <!--external css-->
-    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-	<link href="assets/css/buttons.css" type="text/css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="css/buttons.css" type="text/css" rel="stylesheet">
         
     <!-- Custom styles for this template -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form method="POST"  class="form-login" action="http://dip.net63.net/dip/theme/login.php">
+		      <form method="POST"  class="form-login" action="login.php">
 		        <h2 class="form-login-heading">SEEP Login</h2>
 		        <div class="login-wrap">
 		            <input type="text" class="form-control" name="user"  placeholder="User ID" autofocus>
@@ -88,14 +88,14 @@
 	  </div>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-    <script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
+    <script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
     <script>
-        $.backstretch("assets/img/login-bg.jpg", {speed: 500});
+        $.backstretch("img/login-bg.jpg", {speed: 500});
     </script>
 
 
